@@ -14,18 +14,17 @@
       <th><%= book.title %></th>
       <th><%= book.body %></th>
       <th>
-        <a href="/show">Show</a>
-        <a href="/books/id/edit">Edit</a>
-        <!--DestroyのURLが未記入です忘れないでね-->
-        <a href="/show">Destroy</a>
-        </th>
+        <%= link_to "Show",book_path(book.id) %>
+        <%= link_to "Edit",edit_book_path(book.id) %>
+        <%= link_to "Destroy",book_path(book.id), method: :delete,"data-confilm" => "Are you sure?" %>-->
+      </th>
     </tr>
     <% end %>
   </tbody>
 </table>
 
 <h2>New book</h2>
-<%= form_with model: Book.new do |f| %>
+<%= form_with model: Book.new,method: :post do |f| %>
 <h3>title</h3>
 <%= f.text_field :title %>
 
